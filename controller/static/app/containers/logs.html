@@ -14,10 +14,9 @@
 </div>
 <div class="row" ng-show="vm.logs">
     <div class="column">
-        <div class="ui segment page" > 
-            <h4 class="dividing header">Container: {{ vm.id | limitTo:12 }}</h2>
-            <pre ng-bind="vm.logs" class="logs"> 
-            </pre>
+        <div class="ui segment page" ng-style="height: {{vm.content_height}}px;">
+            <h4 class="dividing header"><i class="cube icon"></i> {{ vm.id | limitTo:12 }}</h4>
+            <pre ng-bind="vm.logs" class="logs"></pre>
         </div>
     </div>
 </div>

@@ -217,11 +217,11 @@
                         <td>{{c.Created * 1000 | date:'yyyy-MM-dd HH:mm:ss Z'}}</td>
                         <td class="collapsing">
                             <div ui-sref="dashboard.inspect({id: c.Id})" class="basic compact blue ui icon button">
-                                <i class="search icon"></i>
+                                <i class="eye icon"></i>
                             </div>
                             <div class="ui right pointing dropdown">
                                 <div class="basic compact blue ui icon button">
-                                    <i class="wrench icon"></i>
+                                    <i class="sidebar icon"></i>
                                 </div>
                                 <div class="menu">
                                     <a ng-click="vm.showRestartContainerDialog(c)" class="item"><i class="green refresh icon"></i> Restart</a>
@@ -278,6 +278,14 @@
     <a class="item" ng-click="vm.destroyAll()">
         <i class="delete icon"></i>
         Destroy 
+    </a>
+    <a class="item" ng-click="vm.terminalAll()">
+        <i class="terminal icon"></i>
+        Console
+    </a>
+    <a class="item" ng-click="vm.logsAll()">
+        <i class="file outline icon"></i>
+        Logs
     </a>
 </div>
 

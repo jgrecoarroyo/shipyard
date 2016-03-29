@@ -1,24 +1,16 @@
 <div class="ui padded grid">
 <!-- this needs to be inlined so it does not conflict with the semantic "terminal" names -->
-<div class="two column row">
-    <div class="left floated column">
-        <div class="ui small icon input">
-            <input id="command" ng-model="vm.command" />
-            <i class="terminal icon"></i>
-        </div>
-        <div ng-click="vm.connect()" class="ui small green labeled button">Run</div>
-        <div ng-click="vm.disconnect()" class="ui small labeled button">Disconnect</div>
+    <div class="ui top attached tabular menu">
+        <a ng-repeat="container in vm.containers" ng-class="{active: $index == 0}" class="item" data-tab="tab-{{$index}}" id="tab-{{$index}}" ng-click="vm.activeTab($index)" ><i class="cube icon"></i>{{container | limitTo:12}}</a>
     </div>
-
-    <div class="right aligned right floated column">
-    </div>
-</div>
-
-<div class="row">
-    <div class="column">
-        <div class="ui segment">
-            <div id="container-terminal"></div>
+    <div ng-repeat="container in vm.containers" ng-class="{active: $index == 0}" class="ui bottom attached tab segment" data-tab="tab-{{$index}}" id="content-{{$index}}" style="font-size: 12px;">
+        <div class="row">
+            <div class="column">
+                <div class="ui segment">
+                    <div id="container-terminal-{{$index}}"></div>
+                </div>
+            </div>
         </div>
     </div>
-</div>
+
 </div>

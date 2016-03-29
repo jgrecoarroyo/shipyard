@@ -42,6 +42,8 @@
         vm.destroyAll = destroyAll;
         vm.stopAll = stopAll;
         vm.restartAll = restartAll;
+        vm.terminalAll = terminalAll;
+        vm.logsAll = logsAll;
 
         refresh();
 
@@ -85,6 +87,37 @@
             angular.forEach(vm.selected, function (s) {
                 vm.selected[s.Id].Selected = false;
             });
+        }
+
+        function terminalAll() {
+            console.log("terminal All clicked");
+            console.log(vm.selected);
+            var selectedId = "";
+            angular.forEach(vm.selected, function (s) {
+                if(vm.selected[s.Id].Selected == true){
+                    if(selectedId != ""){
+                        selectedId += "," + s.Id;
+                    }else{
+                        selectedId = s.Id;
+                    }
+                }
+            });
+            clearAll();
+            window.location = "http://" + window.location.host + "/#/exec/" + selectedId;
+            console.log("http://" + window.location.host + "/#/exec/" + selectedId);
+        }
+
+        function logsAll() {
+            console.log("Logs All clicked");
+            console.log(vm.selected);
+            var selectedId = "";
+            angular.forEach(vm.selected, function (s) {
+                if(vm.selected[s.Id].Selected == true){
+                    selectedId = s.Id;
+                }
+            });
+            clearAll();
+            window.location = "http://" + window.location.host + "/#/containers/" + selectedId + "/logs";
         }
 
         function restartAll() {
